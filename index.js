@@ -3,7 +3,7 @@ const fs = require('fs');
 
 let pendingGroupIcon = null;
 wa.create({
-  sessionId: "COVID_HELPER",
+  sessionId: "NIGHTMARE",
   multiDevice: true, //required to enable multiDevice support
   authTimeout: 60, //wait only 60 seconds to get a connection with the host account device
   blockCrashLogs: true,
