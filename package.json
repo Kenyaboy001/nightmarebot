@@ -1,10 +1,5 @@
 {
-  "name": "NIGHTMARE WHATSAPP BOT",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "index.js"
-  },
+  
   "dependencies": {
     "@open-wa/wa-automate": "^4.67.0"
   }
