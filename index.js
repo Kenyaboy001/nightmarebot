@@ -154,4 +154,32 @@ function start(client) {
               }
             }
           });
+  client.onMessage(async (message) => {
+    // Check if the message starts with '.kick' and the sender is an admin
+    if (message.body.toLowerCase().startsWith('.kick ') && await isAdmin(message.from)) {
+      // Extract the tagged user from the message
+      const taggedUser = message.mentionedIds[0];
+
+      // Check if a user is tagged
+      if (!taggedUser) {
+        await client.sendText(message.chatId, 'Please tag the user you want to kick.');
+        return;
+      }
+
+      try {
+        // Kick the tagged user from the group
+        await client.removeParticipant(message.chatId, taggedUser);
+        console.log(`User ${taggedUser} kicked from the group by admin ${message.from}`);
+      } catch (error) {
+        console.error('Error kicking user:', error);
+      }
+    }
+  });
+
+  async function isAdmin(sender) {
+    // Check if the sender is an admin in the group
+    const admins = await client.getGroupAdmins(message.chatId);
+    return admins.includes(sender);
+  }
+
 }
